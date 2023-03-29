@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+<head>
+    <style >
+    #pic{
+       background-image: url("{% static 'images/t4.jpg' %}");
+       margin-top:10%;
+       
+    }
+    #h{
+      margin-left:10%;
+    }
+    #b{
+      margin-left:15%;
+    }
+  
+    </style>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LOGIN PAGE</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar bg-warning">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <h4>LIBRARY MANAGEMENT SYSTEM</h4>
+    </a>
+  </div>
+</nav>
+      <div class="container">
+        <div class="row rowfirst ">
+           <div class="col colfirst" style=''>
+              <div id="pic">
+                  <div class="login">
+                        <h3 style="color:white;margin-left:9%;font-family:cursive;letter-spacing:1px;"><b>Welcome, login here first !</b></h3>
+                        <br>
+                        <form method="post">
+                           {% csrf_token %}
+                           <h5 id="h">{{form.as_p}}</h5>
+                        <button type="submit" class="btn btn-info me-2" id='b'>Submit</button>
+                        <button type="reset" class="btn btn-info pe-4">Reset</button>
+                        </form>
+                        <br>
+                        <h5 style="margin-left:10%">Are you new here.?<a href='/register/' class='register'>Register first </a></h5>
+                  </div>
+              </div>
+           </div>
+       </div>
+    </div>
+{% include 'app1/footer.html'%}
+</body>
+</html>

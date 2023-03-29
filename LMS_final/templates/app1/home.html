@@ -1,0 +1,163 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HOME PAGE</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    </head>
+  <body>
+
+    <!-- start of navbar  w-100  -->
+    {% include 'app1/navbar.html' %}
+    <!-- end of navbar -->
+
+    <div class="container-fluid">
+        {% if perms.app1 %}
+      <div class="row flex-nowrap mt-5">
+          <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+              <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                  <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                      <span class="fs-5 d-none d-sm-inline"><b>=====Menu=====</b></span>
+                  </a>
+                  <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                    {% if perms.app1.add_bookmodel%}
+                      <li class="nav-item">
+                          <a href="/add/" class="nav-link align-middle px-0">
+                              <i class="fs-5 bi-journal-plus"></i><span class="ms-1 d-none d-sm-inline">ADD BOOK</span>
+                          </a>
+                          {% endif %}
+                      </li>
+                      <li class="nav-item">
+                        <a href="" class="nav-link align-middle px-0">
+                            <i class="fs-5 bi-list-ul"></i><span class="ms-1 d-none d-sm-inline">ALL BOOKS</span>
+                        </a>
+                      </li>
+                      <li>
+                          <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                              <i class="fs-5 bi-funnel-fill"></i> <span class="ms-1 d-none d-sm-inline">FILTER BOOKS</span> </a>
+                          <ul class="collapse  nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                              <li class="w-100">
+                                  <a href="/catfilter/Fiction" class="nav-link px-0"> <span class="d-none d-sm-inline">Fiction</span></a>
+                              </li>
+                              <li>
+                                <a href="/catfilter/edited" class="nav-link px-0"> <span class="d-none d-sm-inline">Edited</span></a>
+                              </li>
+                              <li>
+                                <a href="/catfilter/non-fiction" class="nav-link px-0"> <span class="d-none d-sm-inline">Non-Fiction</span></a>
+                              </li>
+                              <li>
+                                <a href="/catfilter/Reference" class="nav-link px-0"> <span class="d-none d-sm-inline">Refernce</span></a>
+                              </li>
+                              
+                          </ul>
+                      </li>
+                     
+                      <li>
+                          <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+                              <i class="fs-5 bi-book"></i><span class="ms-1 d-none d-md-inline"> SORT BY:BOOK NAME</span></a>
+                          <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+                              <li class="w-100">
+                                  <a href="/bookname_ATOZ" class="nav-link px-0"> <span class="d-none d-sm-inline">A TO Z</span></a>
+                              </li>
+                              <li>
+                                  <a href="/bookname_ZTOA" class="nav-link px-0"> <span class="d-none d-sm-inline">Z TO A</span></a>
+                              </li>
+                          </ul>
+                      </li>
+                      <li>
+                          <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                              <i class="fs-5 bi-person"></i> <span class="ms-1 d-none d-sm-inline">SORT BY:AUTHOR NAME</span> </a>
+                              <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                              <li class="w-100">
+                                  <a href="/authorname_ATOZ" class="nav-link px-0"> <span class="d-none d-sm-inline">A TO Z</span></a>
+                              </li>
+                              <li>
+                                  <a href="/authorname_ZTOA" class="nav-link px-0"> <span class="d-none d-sm-inline">Z TO A</span></a>
+                              </li>
+                          </ul>
+                      </li>
+                      <li>
+                        <a href="#submenu4" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                            <i class="fs-5 bi-currency-rupee"></i> <span class="ms-1 d-none d-sm-inline">SORT BY:PRICE</span> </a>
+                            <ul class="collapse nav flex-column ms-1" id="submenu4" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <a href="/htol" class="nav-link px-0"> <span class="d-none d-sm-inline">High to Low</span></a>
+                            </li>
+                            <li>
+                                <a href="/ltoh" class="nav-link px-0"> <span class="d-none d-sm-inline">Low to High</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                      <a href="#submenu5" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                          <i class="fs-5 bi-currency-rupee"></i> <span class="ms-1 d-none d-sm-inline">SORT BY:ID</span> </a>
+                          <ul class="collapse nav flex-column ms-1" id="submenu5" data-bs-parent="#menu">
+                          <li class="w-100">
+                              <a href="/id_htol" class="nav-link px-0"> <span class="d-none d-sm-inline">High to Low</span></a>
+                          </li>
+                          <li>
+                              <a href="/id_ltoh" class="nav-link px-0"> <span class="d-none d-sm-inline">Low to High</span></a>
+                          </li>
+                      </ul>
+                  </li>
+                  </ul>
+                  <hr>
+              </div>
+          </div>
+
+          <!---content here-->
+          
+          <div class="col mt-4 " >
+            <table class="table table-striped " style="width:100%;display:block;">
+              <thead>
+              <tr>
+                  <th class="col-md-2">Id</th>
+                  <th class="col-md-2">Book Name</th>
+                  <th class="col-md-2">Author Name</th>
+                  <th class="col-md-2">Price</th>
+                  <th class="col-md-2">Pages</th>
+                  <th class="col-md-2">Category</th>
+                  {% if perms.app1.change_bookmodel%}
+                  <th scope="col">Update</th>
+                  {% endif %}
+                  {% if perms.app1.delete_bookmodel%}
+                  <th scope="col">Delete</th>
+                  {% endif %}
+  
+              </tr>
+          </thead>
+          <tbody style='height:580px;display:block;overflow-y:scroll;'>
+          {% for l in data %}
+            <tr>
+              <td class="col-md-2">{{l.id}}</td>
+              <td class="col-md-2">{{l.book_name}}</td>
+              <td class="col-md-2">{{l.author_name}}</td>
+              <td class="col-md-2">{{l.price}}</td>
+              <td class="col-md-2">{{l.page}}</td>
+              <td class="col-md-2">{{l.type_of_book}}</td>
+              {% if perms.app1.change_bookmodel%}
+              <td><a href="/update/{{l.id}}" class="btn btn-info btn-sm"><i class="bi bi-pencil"></i></a></td>
+              {% endif %}
+              {% if perms.app1.delete_bookmodel%}
+              <td><a href="/delete/{{l.id}}" class="btn btn-danger btn-sm"><i class="bi bi-trash3"></i></a></td>
+              {% endif %}
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+
+          </div>   
+      </div>  
+      {% else %}
+     <h1 style="margin-top:5.6%;" > you dont have any permission (add,delete,update,view ) . <br> please get access first !!!</h1>
+    {% endif %}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
